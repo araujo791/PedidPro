@@ -1,0 +1,11 @@
+{
+    "desktop_version":  "1.44",
+    "desktop_url":  "https://araujo791.github.io/PedidPro/updates/Setup_PedidPro_Gestao_v1.44.exe",
+    "desktop_size":  1942528,
+    "desktop_notes":  "- SEFAZ NFC-e Modelo 65 (Caminho A opcional, desativado por padrao)\n- Busca automatica de NCM/CEST/CFOP/CSOSN no Cardapio + lote\n- DANFE NFC-e com QR Code escaneavel e Contingencia Offline\n- Auto-Manutencao de tabelas fiscais e Auto-Update via site PedidPro",
+    "apk_version":  "1.2",
+    "apk_url":  "https://araujo791.github.io/PedidPro/updates/PedidPro_Cozinha_v1.2.apk",
+    "apk_notes":  "- Layout 100% nativo em landscape p/ tablets\n- Credenciais de login salvas entre reinicios\n- Pedidos das Mesas sincronizados e devolucao ao Balcao/Caixa",
+    "fiscal_version":  "2026.11.1",
+    "fiscal_url":  "https://araujo791.github.io/PedidPro/updates/fiscal_tables.json"
+}

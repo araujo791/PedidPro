@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>PedidPro — Área Oculta de Implantação &amp; Atualizações</title>
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .imp-wrap { max-width: 980px; margin: 0 auto; padding: 52px 20px 80px; }
+    .imp-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 32px; }
+    .imp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 24px; }
+    .imp-card {
+      background: var(--card); backdrop-filter: blur(18px); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 26px; display: flex; flex-direction: column; gap: 12px;
+    }
+    .imp-tag {
+      display: inline-block; padding: 4px 11px; border-radius: 999px; font-size: 0.76rem; font-weight: 700;
+      font-family: 'JetBrains Mono', monospace; background: rgba(255,107,53,0.16); color: var(--accent-2); align-self: flex-start;
+    }
+    .imp-tag.green { background: rgba(16,185,129,0.16); color: #34d399; }
+    .imp-tag.blue { background: rgba(56,189,248,0.16); color: #38bdf8; }
+    .imp-notes { font-size: 0.87rem; color: var(--text-muted); white-space: pre-line; background: rgba(255,255,255,0.03); padding: 12px; border-radius: 10px; border: 1px solid var(--border); }
+    .imp-url-row { display: flex; gap: 8px; align-items: center; margin-top: 6px; }
+    .imp-url-row input {
+      flex: 1; background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 9px;
+      padding: 8px 10px; color: #cbd5e1; font-family: 'JetBrains Mono', monospace; font-size: 0.76rem;
+    }
+    @media (max-width: 780px) { .imp-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="ambient-bg" aria-hidden="true">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <div class="imp-wrap">
+    <div class="imp-head">
+      <a href="index.html" class="brand">
+        <img src="assets/logo.png" alt="PedidPro" class="brand-logo" />
+        <div class="brand-text">
+          <span class="brand-name">Pedid<span>Pro</span> Implantação</span>
+          <span class="brand-sub">Link direto reservado para instalação e atualizações</span>
+        </div>
+      </a>
+      <a href="index.html" class="btn btn-glass btn-sm">← Voltar ao Site Público</a>
+    </div>
+
+    <div class="imp-grid">
+      <div class="imp-card">
+        <span class="imp-tag" id="impWinVer">WINDOWS • v1.44</span>
+        <h3>PedidPro Gestão (Desktop Windows)</h3>
+        <p style="color:var(--text-muted);font-size:0.92rem">Instalador único completo (Caixa Servidor / Terminal Cliente). Preserva banco SQLite, logo e configurações ao atualizar.</p>
+        <div class="imp-notes" id="impWinNotes">Carregando notas da versão...</div>
+        <a id="impWinBtn" href="updates/Setup_PedidPro_Gestao_v1.44.exe" class="btn btn-primary btn-block" download>
+          ⬇ Baixar Instalador Windows (.exe)
+        </a>
+        <div class="imp-url-row">
+          <input type="text" id="impWinUrl" readonly value="" />
+          <button type="button" class="copy-btn" data-copy-target="impWinUrl">Copiar Link</button>
+        </div>
+      </div>
+
+      <div class="imp-card">
+        <span class="imp-tag green" id="impApkVer">ANDROID • v1.2</span>
+        <h3>PedidPro Cozinha KDS (Tablet APK)</h3>
+        <p style="color:var(--text-muted);font-size:0.92rem">Aplicativo nativo exclusivo para tablets na cozinha. Sincroniza Balcão, Mesas e Delivery com o servidor LAN.</p>
+        <div class="imp-notes" id="impApkNotes">Carregando notas da versão...</div>
+        <a id="impApkBtn" href="updates/PedidPro_Cozinha_v1.2.apk" class="btn btn-success btn-block" download>
+          ⬇ Baixar APK Cozinha (.apk)
+        </a>
+        <div class="imp-url-row">
+          <input type="text" id="impApkUrl" readonly value="" />
+          <button type="button" class="copy-btn" data-copy-target="impApkUrl">Copiar Link</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="imp-card">
+      <span class="imp-tag blue" id="impFiscalVer">AUTO-MANUTENÇÃO • v2026.11.1</span>
+      <h3>Tabelas Fiscais SEFAZ / NCM &amp; Manifesto Auto-Update</h3>
+      <p style="color:var(--text-muted);font-size:0.9rem">
+        O aplicativo Windows consulta automaticamente estes arquivos JSON para verificar atualizações e sincronizar códigos NCM/CEST/SEFAZ sem precisar enviar links públicos no site.
+      </p>
+      <div class="imp-url-row">
+        <input type="text" id="impManifestUrl" readonly value="" />
+        <button type="button" class="copy-btn" data-copy-target="impManifestUrl">Copiar manifest.json</button>
+      </div>
+      <div class="imp-url-row">
+        <input type="text" id="impFiscalUrl" readonly value="" />
+        <button type="button" class="copy-btn" data-copy-target="impFiscalUrl">Copiar fiscal_tables.json</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">Copiado!</div>
+
+  <script>
+    (function () {
+      const base = window.location.href.replace(/\/[^\/]*$/, '');
+      document.getElementById('impWinUrl').value = base + '/updates/Setup_PedidPro_Gestao_v1.44.exe';
+      document.getElementById('impApkUrl').value = base + '/updates/PedidPro_Cozinha_v1.2.apk';
+      document.getElementById('impManifestUrl').value = base + '/updates/manifest.json';
+      document.getElementById('impFiscalUrl').value = base + '/updates/fiscal_tables.json';
+
+      fetch('updates/manifest.json?t=' + Date.now())
+        .then(r => r.ok ? r.json() : null)
+        .then(m => {
+          if (!m) return;
+          document.getElementById('impWinVer').textContent = 'WINDOWS • v' + m.desktop_version;
+          document.getElementById('impWinNotes').textContent = m.desktop_notes || 'Versão estável.';
+          if (m.desktop_url) {
+            document.getElementById('impWinBtn').href = m.desktop_url;
+            document.getElementById('impWinUrl').value = m.desktop_url;
+          }
+          document.getElementById('impApkVer').textContent = 'ANDROID • v' + m.apk_version;
+          document.getElementById('impApkNotes').textContent = m.apk_notes || 'Versão estável.';
+          if (m.apk_url) {
+            document.getElementById('impApkBtn').href = m.apk_url;
+            document.getElementById('impApkUrl').value = m.apk_url;
+          }
+          if (m.fiscal_version) {
+            document.getElementById('impFiscalVer').textContent = 'AUTO-MANUTENÇÃO • v' + m.fiscal_version;
+          }
+        })
+        .catch(() => {});
+
+      const toast = document.getElementById('toast');
+      document.querySelectorAll('[data-copy-target]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const inp = document.getElementById(btn.dataset.copyTarget);
+          if (!inp) return;
+          if (navigator.clipboard) navigator.clipboard.writeText(inp.value);
+          toast.textContent = 'Link copiado!';
+          toast.classList.add('show');
+          setTimeout(() => toast.classList.remove('show'), 2200);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
