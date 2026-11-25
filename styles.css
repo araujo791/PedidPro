@@ -307,7 +307,7 @@ h1 {
 
 /* BENTO FEATURES */
 .bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.glass-card, .bento-card, .step-card, .download-card {
+.glass-card, .bento-card, .step-card {
   background: var(--card);
   backdrop-filter: blur(18px);
   border: 1px solid var(--border);
@@ -315,7 +315,7 @@ h1 {
   padding: 26px;
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
-.bento-card:hover, .download-card:hover {
+.bento-card:hover {
   border-color: var(--border-glow);
   box-shadow: 0 20px 50px rgba(0,0,0,0.4);
 }
@@ -408,16 +408,7 @@ h1 {
 .step-card p { font-size: 0.88rem; color: var(--text-muted); }
 code { background: rgba(255,255,255,0.08); padding: 2px 6px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 0.82em; color: #e2e8f0; }
 
-/* DOWNLOADS */
-.download-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-.dl-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-.dl-os { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.08em; color: var(--accent-2); }
-.dl-os.green { color: #34d399; }
-.dl-ver { background: rgba(255,107,53,0.16); color: var(--accent-2); padding: 4px 10px; border-radius: 999px; font-size: 0.78rem; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
-.dl-ver.green { background: rgba(16,185,129,0.16); color: #34d399; }
-.download-card h3 { font-size: 1.32rem; margin-bottom: 8px; }
-.download-card p { color: var(--text-muted); font-size: 0.92rem; margin-bottom: 16px; }
-.dl-specs { list-style: none; display: flex; flex-direction: column; gap: 7px; margin-bottom: 22px; font-size: 0.88rem; color: #cbd5e1; }
+
 
 /* CONTACT */
 .contact-wrapper {
@@ -495,7 +486,7 @@ code { background: rgba(255,255,255,0.08); padding: 2px 6px; border-radius: 6px;
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
 @media (max-width: 980px) {
-  .hero-grid, .stage-grid, .download-grid, .contact-wrapper { grid-template-columns: 1fr; }
+  .hero-grid, .stage-grid, .contact-wrapper { grid-template-columns: 1fr; }
   .bento-grid { grid-template-columns: repeat(2, 1fr); }
   .steps-grid { grid-template-columns: repeat(2, 1fr); }
   .floating-tablet { position: static; margin-top: 16px; width: 100%; }

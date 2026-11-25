@@ -221,7 +221,7 @@
     },
     reports: {
       title: 'Relatórios Imprimíveis, SEFAZ & Auto-Update',
-      desc: 'Emita relatórios Diário, Semanal, Mensal ou Anual com logo da empresa, gerencie NFC-e (Caminho A opcional) e atualize com 1 clique via GitHub Releases.',
+      desc: 'Emita relatórios Diário, Semanal, Mensal ou Anual com logo da empresa, gerencie NFC-e (Caminho A opcional) e atualize o sistema com segurança.',
       bullets: [
         'Impressão paginada profissional com opção de exibir/ocultar estoque',
         'Auto-Manutenção online de tabelas NCM/SEFAZ + Exportação XML .zip',
@@ -262,7 +262,7 @@
           <ul class="stage-bullets">
             ${data.bullets.map(b => `<li>${b}</li>`).join('')}
           </ul>
-          <a href="#downloads" class="btn btn-primary btn-sm">Baixar e Testar Agora →</a>
+          <a href="#contato" class="btn btn-primary btn-sm">Solicitar Demonstração →</a>
         </div>
         <div class="mockup-frame">${data.preview}</div>
       </div>`;
@@ -332,39 +332,4 @@
     });
   }
 
-  // 10. Fetch Live Releases from GitHub API
-  fetch('https://api.github.com/repos/araujo791/PedidPro-Gest-o/releases?per_page=8')
-    .then(r => r.ok ? r.json() : null)
-    .then(releases => {
-      if (!Array.isArray(releases)) return;
-      let winSet = false, apkSet = false;
-      for (const rel of releases) {
-        if (!rel || rel.draft || !Array.isArray(rel.assets)) continue;
-        const tag = (rel.tag_name || '').trim();
-        if (!winSet && tag.toLowerCase().startsWith('v')) {
-          const exe = rel.assets.find(a => a.name && a.name.toLowerCase().endsWith('.exe'));
-          if (exe) {
-            winSet = true;
-            document.getElementById('winVerBadge').textContent = tag;
-            document.getElementById('dlWinTag').textContent = tag;
-            document.getElementById('heroWinDownload').href = exe.browser_download_url;
-            document.getElementById('dlWinBtn').href = exe.browser_download_url;
-            document.getElementById('dlWinBtn').textContent = '⬇ Baixar ' + exe.name;
-          }
-        }
-        if (!apkSet && tag.toLowerCase().startsWith('apk-v')) {
-          const apk = rel.assets.find(a => a.name && a.name.toLowerCase().endsWith('.apk'));
-          if (apk) {
-            apkSet = true;
-            const cleanApk = tag.replace(/^apk-/i, '');
-            document.getElementById('apkVerBadge').textContent = cleanApk;
-            document.getElementById('dlApkTag').textContent = tag;
-            document.getElementById('heroApkDownload').href = apk.browser_download_url;
-            document.getElementById('dlApkBtn').href = apk.browser_download_url;
-            document.getElementById('dlApkBtn').textContent = '⬇ Baixar ' + apk.name;
-          }
-        }
-      }
-    })
-    .catch(() => {});
 })();
