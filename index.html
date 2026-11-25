@@ -92,43 +92,17 @@
           </div>
         </div>
 
-        <!-- 3D FLOATING SHOWCASE HERO MOCKUP -->
+        <!-- 3D FLOATING SHOWCASE HERO REAL SCREENSHOT -->
         <div class="hero-visual reveal" data-tilt>
           <div class="glass-window">
             <div class="win-titlebar">
               <div class="win-dots"><span></span><span></span><span></span></div>
-              <div class="win-title">PedidPro Gestão v1.44 — Servidor LAN :8765</div>
-              <div class="win-pill">● Caixa Aberto</div>
+              <div class="win-title">PedidPro Gestão v1.44 — Tela Real do Sistema</div>
+              <div class="win-pill">● Servidor LAN :8765</div>
             </div>
-            <div class="win-body">
-              <div class="mini-sidebar">
-                <div class="mini-item active">📊 Visão Geral</div>
-                <div class="mini-item">🛒 PDV Rápido</div>
-                <div class="mini-item">🪑 Mesas</div>
-                <div class="mini-item">🍳 Cozinha <b class="badge-mini">4</b></div>
-                <div class="mini-item">🛵 Delivery</div>
-                <div class="mini-item">📦 Cardápio</div>
-                <div class="mini-item">🧾 Fiscal SEFAZ</div>
-              </div>
-              <div class="mini-main">
-                <div class="mini-kpis">
-                  <div class="mini-kpi accent"><span>Hoje</span><strong>R$ 3.480</strong></div>
-                  <div class="mini-kpi success"><span>Ticket</span><strong>R$ 68,20</strong></div>
-                  <div class="mini-kpi warn"><span>Cozinha</span><strong>4 abertos</strong></div>
-                </div>
-                <div class="mini-chart-card">
-                  <div class="mini-chart-head"><span>Receita 7 Dias</span><em>+24,8%</em></div>
-                  <div class="mini-bars">
-                    <i style="height:45%"></i><i style="height:62%"></i><i style="height:54%"></i>
-                    <i style="height:78%"></i><i style="height:70%"></i><i style="height:88%"></i>
-                    <i class="today" style="height:98%"></i>
-                  </div>
-                </div>
-                <div class="mini-order-list">
-                  <div class="mini-ord"><span><b>#142</b> • Mesa 04 (2x Smash)</span><em class="tag-ready">Devolvido p/ Caixa</em></div>
-                  <div class="mini-ord"><span><b>#143</b> • Delivery ViaCEP</span><em class="tag-prep">Preparando</em></div>
-                </div>
-              </div>
+            <div class="hero-shot-wrap" id="heroShotWrap" title="Clique para ampliar a tela">
+              <img src="img/01-Vis%C3%A3o%20geral.png" alt="Tela Visão Geral do PedidPro Gestão" class="hero-shot-img" />
+              <span class="shot-zoom-badge">🔍 Ampliar tela</span>
             </div>
           </div>
 
@@ -202,23 +176,30 @@
     <section class="section showcase-section" id="telas">
       <div class="container">
         <div class="section-head reveal">
-          <span class="eyebrow">Telas Reais &amp; Interativas</span>
-          <h2>Explore as principais <span class="gradient-text">telas do PedidPro</span></h2>
-          <p>Alterne entre os módulos do Windows Desktop e do App Android Cozinha abaixo.</p>
+          <span class="eyebrow">Telas Reais do Sistema</span>
+          <h2>Veja cada módulo do <span class="gradient-text">PedidPro por dentro</span></h2>
+          <p>Clique em qualquer aba ou miniatura abaixo para explorar as capturas reais da versão v1.44 e clique na imagem para ampliar em tela cheia.</p>
         </div>
 
         <div class="screen-tabs reveal" id="screenTabs">
-          <button class="screen-tab active" data-screen="dashboard">📊 Dashboard</button>
-          <button class="screen-tab" data-screen="pos">🛒 PDV &amp; NFC-e</button>
-          <button class="screen-tab" data-screen="tables">🪑 Mesas &amp; Salão</button>
-          <button class="screen-tab" data-screen="kitchen">📱 Cozinha Tablet (APK)</button>
-          <button class="screen-tab" data-screen="catalog">📦 Cardápio &amp; NCM Auto</button>
-          <button class="screen-tab" data-screen="reports">🖨 Relatórios &amp; Fiscal</button>
+          <button class="screen-tab active" data-screen="visao">📊 Visão Geral</button>
+          <button class="screen-tab" data-screen="pdv">🛒 PDV Rápido</button>
+          <button class="screen-tab" data-screen="mesas">🪑 Mesas &amp; Comandas</button>
+          <button class="screen-tab" data-screen="kds">🍳 Cozinha KDS</button>
+          <button class="screen-tab" data-screen="delivery">🛵 Delivery</button>
+          <button class="screen-tab" data-screen="clientes">👥 Clientes</button>
+          <button class="screen-tab" data-screen="cardapio">📦 Cardápio &amp; Estoque</button>
+          <button class="screen-tab" data-screen="custos">📈 Custos &amp; Lucro</button>
+          <button class="screen-tab" data-screen="caixa">💳 Caixa</button>
+          <button class="screen-tab" data-screen="relatorios">🖨 Relatórios</button>
+          <button class="screen-tab" data-screen="opcoes">⚙ Marca &amp; Opções</button>
         </div>
 
         <div class="screen-stage glass-card reveal" id="screenStage">
           <!-- Populated cleanly & dynamically by app.js -->
         </div>
+
+        <div class="thumb-strip reveal" id="thumbStrip"></div>
       </div>
     </section>
 
@@ -409,6 +390,16 @@
     <span>💬</span>
     <b>WhatsApp</b>
   </a>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button type="button" class="lb-close" id="lbClose" aria-label="Fechar">✕</button>
+    <button type="button" class="lb-nav lb-prev" id="lbPrev" aria-label="Anterior">‹</button>
+    <figure class="lb-figure">
+      <img id="lbImg" src="" alt="" />
+      <figcaption id="lbCaption"></figcaption>
+    </figure>
+    <button type="button" class="lb-nav lb-next" id="lbNext" aria-label="Próxima">›</button>
+  </div>
 
   <div class="toast" id="toast">Copiado!</div>
 

@@ -356,7 +356,35 @@ h1 {
 }
 
 .screen-stage { padding: 28px; min-height: 430px; }
-.stage-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 28px; align-items: center; }
+.hero-shot-wrap {
+  position: relative;
+  background: #0d1424;
+  cursor: zoom-in;
+  overflow: hidden;
+}
+.hero-shot-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.35s ease;
+}
+.hero-shot-wrap:hover .hero-shot-img { transform: scale(1.02); }
+.shot-zoom-badge {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  background: rgba(7, 11, 20, 0.82);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.16);
+  color: #f8fafc;
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 5px 11px;
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.stage-grid { display: grid; grid-template-columns: 0.72fr 1.28fr; gap: 28px; align-items: center; }
 .stage-desc h3 { font-size: 1.45rem; font-weight: 800; margin-bottom: 10px; }
 .stage-desc p { color: var(--text-muted); margin-bottom: 16px; font-size: 0.95rem; }
 .stage-bullets { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-bottom: 18px; }
@@ -365,11 +393,105 @@ h1 {
 
 .mockup-frame {
   background: #0a101d;
-  border: 1px solid rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.14);
   border-radius: 16px;
-  padding: 16px;
+  padding: 10px;
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 18px 40px rgba(0,0,0,0.5);
+  position: relative;
+  cursor: zoom-in;
+  overflow: hidden;
 }
+.stage-shot-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+.mockup-frame:hover .stage-shot-img { transform: scale(1.012); }
+
+.thumb-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(112px, 1fr));
+  gap: 10px;
+  margin-top: 18px;
+}
+.thumb-item {
+  background: rgba(17, 25, 42, 0.75);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 6px;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  text-align: center;
+}
+.thumb-item:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.28); }
+.thumb-item.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(255,107,53,0.28);
+}
+.thumb-item img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 7px;
+  display: block;
+  margin-bottom: 5px;
+}
+.thumb-item span {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.thumb-item.active span { color: #fff; }
+
+/* LIGHTBOX */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background: rgba(5, 8, 16, 0.92);
+  backdrop-filter: blur(12px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.lightbox.open { display: flex; }
+.lb-figure { max-width: min(1220px, 90vw); max-height: 88vh; text-align: center; }
+.lb-figure img {
+  max-width: 100%;
+  max-height: 78vh;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.16);
+  box-shadow: 0 28px 80px rgba(0,0,0,0.75);
+}
+.lb-figure figcaption {
+  margin-top: 12px;
+  font-size: 0.96rem;
+  color: #e2e8f0;
+  font-weight: 600;
+}
+.lb-close, .lb-nav {
+  position: fixed;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 999px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.2s;
+}
+.lb-close { top: 20px; right: 24px; width: 44px; height: 44px; font-size: 1.1rem; }
+.lb-nav { top: 50%; transform: translateY(-50%); width: 48px; height: 48px; font-size: 1.8rem; line-height: 1; }
+.lb-prev { left: 20px; }
+.lb-next { right: 20px; }
+.lb-close:hover, .lb-nav:hover { background: var(--accent); border-color: var(--accent); }
 .mock-hdr { display: flex; justify-content: space-between; align-items: center; padding-bottom: 10px; margin-bottom: 12px; border-bottom: 1px solid var(--border); font-size: 0.82rem; font-weight: 700; }
 .mock-pill { font-size: 0.72rem; padding: 3px 10px; border-radius: 999px; font-weight: 700; }
 .pill-orange { background: rgba(255,107,53,0.16); color: var(--accent-2); }

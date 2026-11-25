@@ -87,173 +87,156 @@
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  // 6. Interactive Screen Showcase Data
+  // 6. Interactive Real Screenshot Showcase + Lightbox
+  const screenOrder = ['visao', 'pdv', 'mesas', 'kds', 'delivery', 'clientes', 'cardapio', 'custos', 'caixa', 'relatorios', 'opcoes'];
   const screens = {
-    dashboard: {
-      title: 'Visão Geral em Tempo Real',
-      desc: 'Acompanhe faturamento do dia, ticket médio, fila da cozinha, ocupação das mesas e gráfico dos últimos 7 dias logo ao entrar.',
+    visao: {
+      shortTitle: 'Visão Geral',
+      img: 'img/01-Visão geral.png',
+      title: 'Visão Geral — Dashboard em Tempo Real',
+      desc: 'Acompanhe faturamento do dia, ticket médio, pedidos abertos na cozinha, mesas ocupadas e gráfico dos últimos 7 dias logo na entrada.',
       bullets: [
-        'Indicadores ao vivo direto do SQLite WAL (zero lentidão)',
-        'Ranking dos 5 pratos mais vendidos com barra de proporção',
-        'Tema Escuro Obsidian & Claro Minimalista com sua cor e logo'
-      ],
-      preview: `
-        <div class="mock-hdr"><span>📊 Visão Geral — Sua Empresa</span><span class="mock-pill pill-green">● Caixa Aberto</span></div>
-        <div class="mock-row mock-cols-3" style="margin-bottom:10px">
-          <div class="mock-box"><small>Faturamento Hoje</small><strong style="color:#ff9f68">R$ 3.480,00</strong></div>
-          <div class="mock-box"><small>Ticket Médio</small><strong style="color:#34d399">R$ 68,20</strong></div>
-          <div class="mock-box"><small>Mesas Ocupadas</small><strong style="color:#38bdf8">5 / 12</strong></div>
-        </div>
-        <div class="mock-box">
-          <div style="display:flex;justify-content:space-between;margin-bottom:8px"><b>Mais Vendidos (Semana)</b><span style="color:#94a3b8">Total: 214 un</span></div>
-          <div style="display:grid;gap:6px;font-size:0.78rem">
-            <div>1. Smash Burger Duplo <span style="float:right;color:#ff9f68">74 un • R$ 2.730</span></div>
-            <div>2. Pizza Margherita G <span style="float:right;color:#ff9f68">52 un • R$ 3.328</span></div>
-            <div>3. Coca-Cola Lata 350ml <span style="float:right;color:#ff9f68">88 un • R$ 660</span></div>
-          </div>
-        </div>`
+        'Indicadores ao vivo direto do SQLite WAL sem lentidão',
+        'Ranking de itens mais vendidos e atalhos rápidos para PDV e Mesas',
+        'Identidade visual white-label com modo Claro Minimalista e Escuro Obsidian'
+      ]
     },
-    pos: {
-      title: 'PDV Rápido, CPF na Nota & DANFE NFC-e',
-      desc: 'Frente de caixa ágil para Balcão ou Delivery. Se a SEFAZ estiver ativada, já aceita CPF/CNPJ na nota e imprime DANFE NFC-e com QR Code escaneável.',
+    pdv: {
+      shortTitle: 'PDV Rápido',
+      img: 'img/02-PDV Rapido.png',
+      title: 'PDV Rápido — Balcão & Frente de Caixa',
+      desc: 'Tela objetiva para atendimento no balcão ou retirada: busque por nome, adicione com 1 clique, inclua observações para a cozinha e finalize em segundos.',
       bullets: [
-        'Pagamento em PIX, Crédito, Débito ou Dinheiro (com troco)',
-        'Busca automática de endereço por CEP via ViaCEP no Delivery',
-        'Suporte a Contingência Offline automática se a internet cair'
-      ],
-      preview: `
-        <div class="mock-row mock-cols-2">
-          <div class="mock-box">
-            <div class="mock-hdr" style="margin-bottom:8px"><span>🛒 Comanda #144</span><span class="mock-pill pill-orange">Balcão</span></div>
-            <div style="display:grid;gap:6px;font-size:0.78rem">
-              <div>2x Smash Burger Duplo <b style="float:right">R$ 73,80</b></div>
-              <div>1x Batata c/ Cheddar <b style="float:right">R$ 32,00</b></div>
-              <div>2x Coca-Cola Lata <b style="float:right">R$ 15,00</b></div>
-              <hr style="border-color:rgba(255,255,255,0.1)"/>
-              <div>CPF na Nota: <span style="color:#94a3b8">123.456.789-00</span></div>
-              <div style="font-size:0.95rem">TOTAL <b style="float:right;color:#ff9f68">R$ 120,80</b></div>
-            </div>
-          </div>
-          <div class="mock-receipt">
-            <div style="text-align:center;font-weight:700">DANFE NFC-e • Nº 000018<br/>HOMOLOGAÇÃO — SEM VALOR FISCAL</div>
-            <div style="margin:6px 0;border-top:1px dashed #999;padding-top:6px">
-              2x Smash Burger Duplo ...... 73,80<br/>
-              1x Batata c/ Cheddar ....... 32,00<br/>
-              2x Coca-Cola Lata .......... 15,00<br/>
-              <b>TOTAL: R$ 120,80 (PIX)</b>
-            </div>
-            <div style="text-align:center;font-size:0.64rem">Chave: 4126 1100 0000 0100 6500...</div>
-            <div class="mock-qr" title="QR Code NFC-e"></div>
-          </div>
-        </div>`
+        'Pagamento em PIX, Crédito, Débito ou Dinheiro (com cálculo de troco)',
+        'Campo opcional de CPF/CNPJ na nota e emissão NFC-e SEFAZ quando ativada',
+        'Impressão de Cupom Não-Fiscal ou DANFE NFC-e com QR Code'
+      ]
     },
-    tables: {
-      title: 'Mapa de Mesas & Envio Parcial à Cozinha',
-      desc: 'Gerencie de 1 a 100 mesas em tempo real. Envie novos lançamentos para a cozinha (inclusive no tablet Android), divida a conta por pessoa e feche com 1 clique.',
+    mesas: {
+      shortTitle: 'Mesas & Salão',
+      img: 'img/03-Mesa e Chamadas.png',
+      title: 'Mesas & Comandas do Salão',
+      desc: 'Mapa visual do salão com cores por status (Livre, Ocupada e Conta Pedida), divisão de conta por pessoa e integração direta com a cozinha.',
       bullets: [
-        'Status visual imediato: Livre, Ocupada e Conta Pedida',
-        'Envio incremental à cozinha (apenas itens ainda não enviados)',
-        'Alerta sonoro & devolução ao Caixa quando o prato fica pronto'
-      ],
-      preview: `
-        <div class="mock-hdr"><span>🪑 Salão — 12 Mesas Configuradas</span><span class="mock-pill pill-blue">Sincronizado LAN</span></div>
-        <div class="mock-row mock-cols-3">
-          <div class="mock-box" style="border-color:rgba(16,185,129,0.45)"><small style="color:#34d399">● Livre</small><strong>Mesa 01</strong><span>4 lugares</span></div>
-          <div class="mock-box" style="border-color:rgba(255,107,53,0.55)"><small style="color:#ff9f68">🍳 Em Preparo</small><strong>Mesa 02</strong><span>R$ 138,50 • João</span></div>
-          <div class="mock-box" style="border-color:rgba(16,185,129,0.75);background:rgba(16,185,129,0.08)"><small style="color:#34d399">🔔 Pronto na Cozinha!</small><strong>Mesa 04</strong><span>R$ 196,80 • Entregar</span></div>
-        </div>`
+        'Configure de 1 a 100 mesas conforme o tamanho do seu salão',
+        'Envio incremental à cozinha (envia apenas novos itens lançados)',
+        'Alerta imediato quando a cozinha devolve o prato pronto para entrega na mesa'
+      ]
     },
-    kitchen: {
-      title: 'App Android Nativo para Cozinha (APK v1.2)',
-      desc: 'Desenvolvido exclusivamente para ficar nos tablets da cozinha. Layout em cartões grandes em modo paisagem com sincronização a cada 2 segundos com o servidor.',
+    kds: {
+      shortTitle: 'Cozinha KDS',
+      img: 'img/04-Cozinha KDS.png',
+      title: 'Cozinha (KDS) — Touch no PC & Tablet Android APK',
+      desc: 'Quadro em tempo real separado em Na Fila, Preparando e Pronto (No Balcão / Caixa). Funciona em modo touch tela cheia no Windows e no aplicativo Android nativo.',
       bullets: [
-        '100% Nativo Android (zero WebView), texto nítido e botões grandes',
-        'Credenciais do servidor (IP, Porta, Token e Login) salvas no aparelho',
-        'Fluxo completo: Na Fila → Preparando → Devolver p/ Caixa'
-      ],
-      preview: `
-        <div class="mock-hdr"><span>📱 PedidPro Cozinha • Tablet KDS (LAN OK)</span><span class="mock-pill pill-green">v1.2 Nativo</span></div>
-        <div class="mock-row mock-cols-3">
-          <div class="mock-box" style="border-top:3px solid #f59e0b">
-            <small style="color:#fbbf24">NA FILA (2)</small>
-            <strong>#145 • Mesa 07</strong>
-            <p style="color:#cbd5e1;margin:6px 0">2x Smash Duplo<br/><em style="color:#fbbf24">⚠ Sem picles</em></p>
-            <div style="background:#f59e0b;color:#111;text-align:center;padding:5px;border-radius:7px;font-weight:700">▶ Iniciar Preparo</div>
-          </div>
-          <div class="mock-box" style="border-top:3px solid #38bdf8">
-            <small style="color:#38bdf8">PREPARANDO (1)</small>
-            <strong>#143 • Delivery</strong>
-            <p style="color:#cbd5e1;margin:6px 0">1x Pizza Calabresa<br/>2x Coca Lata</p>
-            <div style="background:#10b981;color:#fff;text-align:center;padding:5px;border-radius:7px;font-weight:700">✓ Devolver p/ Caixa</div>
-          </div>
-          <div class="mock-box" style="border-top:3px solid #10b981">
-            <small style="color:#34d399">NO BALCÃO (1)</small>
-            <strong>#142 • Mesa 04</strong>
-            <p style="color:#cbd5e1;margin:6px 0">Devolvido ao Caixa para conferência e entrega.</p>
-            <div style="background:rgba(16,185,129,0.2);color:#34d399;text-align:center;padding:5px;border-radius:7px;font-weight:700">Aguardando Caixa ✓</div>
-          </div>
-        </div>`
+        'Recebe automaticamente pedidos do PDV, Delivery e das Mesas',
+        'Tempo decorrido de preparo + destaque de observações do cliente',
+        'Devolução de pedidos prontos direto ao Caixa / Balcão com alerta sonoro'
+      ]
     },
-    catalog: {
-      title: 'Cardápio com Busca Automática de NCM & Tributação',
-      desc: 'Ao digitar o nome de um prato ou bebida, o sistema sugere NCM, CEST, CFOP e CSOSN/CST pela base local e tabela oficial Siscomex/BrasilAPI online.',
+    delivery: {
+      shortTitle: 'Delivery',
+      img: 'img/05-entregas e delivery.png',
+      title: 'Entregas & Delivery com Busca Automática de CEP',
+      desc: 'Cadastre pedidos de entrega puxando clientes ou digitando o CEP para preencher rua, bairro e cidade automaticamente via ViaCEP.',
       bullets: [
-        'Botão 🔍 Buscar NCM em cada produto + preenchimento em lote',
-        'Separação automática entre Produção Própria e Substituição Tributária (ST)',
-        'Controle de suprimentos, custo unitário e ficha técnica integrada'
-      ],
-      preview: `
-        <div class="mock-hdr"><span>📦 Cadastro de Produto &amp; NCM Automático</span><span class="mock-pill pill-orange">Base Local + Online</span></div>
-        <div class="mock-row mock-cols-2">
-          <div class="mock-box">
-            <small>Produto</small><strong>Coca-Cola Lata 350ml</strong>
-            <small style="margin-top:8px;display:block">Perfil Fiscal</small><strong style="color:#38bdf8">RevendaST (Subst. Trib.)</strong>
-          </div>
-          <div class="mock-box">
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-              <div><small>NCM</small><strong style="color:#34d399">22021000</strong></div>
-              <div><small>CEST</small><strong>0300700</strong></div>
-              <div><small>CFOP</small><strong>5405</strong></div>
-              <div><small>CSOSN</small><strong>500</strong></div>
-            </div>
-          </div>
-        </div>`
+        'CEP salvo junto ao endereço do cliente e no comprovante do motoboy',
+        'Gestão de motoboys, taxas padrão e acerto por entregador',
+        'Acompanhamento de etapas: Em Preparo → Em Rota → Entregue'
+      ]
     },
-    reports: {
-      title: 'Relatórios Imprimíveis, SEFAZ & Auto-Update',
-      desc: 'Emita relatórios Diário, Semanal, Mensal ou Anual com logo da empresa, gerencie NFC-e (Caminho A opcional) e atualize o sistema com segurança.',
+    clientes: {
+      shortTitle: 'Clientes',
+      img: 'img/06-clientes.png',
+      title: 'Cadastro Completo de Clientes',
+      desc: 'Base centralizada de clientes com telefone, CPF, endereço preenchido por CEP, observações de preferência e início rápido de Delivery.',
       bullets: [
-        'Impressão paginada profissional com opção de exibir/ocultar estoque',
-        'Auto-Manutenção online de tabelas NCM/SEFAZ + Exportação XML .zip',
-        'Verificação automática de novas versões preservando todos os dados'
-      ],
-      preview: `
-        <div class="mock-row mock-cols-2">
-          <div class="mock-box">
-            <div class="mock-hdr" style="margin-bottom:8px"><span>🧾 SEFAZ NFC-e (Opcional)</span><span class="mock-pill pill-purple">Cert. A1 DPAPI</span></div>
-            <div style="font-size:0.78rem;display:grid;gap:6px">
-              <div>Chave Geral: <b style="color:#34d399">Opcional (Desativado por padrão)</b></div>
-              <div>Tabela Fiscal: <b>v2026.11.1 (Auto-Sync Online)</b></div>
-              <div>Contabilidade: <b>Exportar XMLs do Mês (.zip)</b></div>
-            </div>
-          </div>
-          <div class="mock-box">
-            <div class="mock-hdr" style="margin-bottom:8px"><span>🔄 Central Auto-Update</span><span class="mock-pill pill-green">v1.44 Atualizado</span></div>
-            <div style="font-size:0.78rem;display:grid;gap:6px">
-              <div>Windows Desktop: <b>v1.44 (Setup Silencioso)</b></div>
-              <div>Android Cozinha: <b>APK v1.2 disponível</b></div>
-              <div>Banco SQLite &amp; Config: <b style="color:#34d399">100% Preservados</b></div>
-            </div>
-          </div>
-        </div>`
+        'Busca instantânea por nome, telefone ou endereço',
+        'Preenchimento automático em novos pedidos Delivery sem redigitar',
+        'Integração direta com atualização cadastral no fechamento do pedido'
+      ]
+    },
+    cardapio: {
+      shortTitle: 'Cardápio & NCM',
+      img: 'img/07 cardabio e estoque.png',
+      title: 'Cardápio, Insumos & Busca Automática de NCM',
+      desc: 'Gerencie produtos de venda, estoque unitário, estoque de suprimentos (insumos) e dados fiscais com busca automática de NCM, CEST, CFOP e CSOSN.',
+      bullets: [
+        'Pesquisa de NCM integrada (base local + Siscomex/BrasilAPI online)',
+        'Botão de preenchimento NCM Fiscal em lote para todo o cardápio',
+        'Baixa automática dos insumos vinculados à Ficha Técnica de cada prato'
+      ]
+    },
+    custos: {
+      shortTitle: 'Custos & Lucro',
+      img: 'img/08-custos e lucros.png',
+      title: 'Custos, Fichas Técnicas & Lucro Real',
+      desc: 'Compare faturamento dos pedidos, compras de suprimentos, CMV pelas fichas técnicas e lucro líquido tanto no geral quanto item a item.',
+      bullets: [
+        'Margem de lucro e gasto em insumos calculados por prato vendido',
+        'Histórico de compras de suprimentos por fornecedor',
+        'Ajuste rápido de ficha técnica em qualquer produto'
+      ]
+    },
+    caixa: {
+      shortTitle: 'Caixa',
+      img: 'img/09-caixa.png',
+      title: 'Caixa & Controle Financeiro do Turno',
+      desc: 'Abertura e fechamento de caixa com fundo de troco, lançamentos de Suprimento (+) e Sangria (−), totais por forma de pagamento e lembrete ao sair.',
+      bullets: [
+        'Separação clara de dinheiro na gaveta, PIX, Crédito e Débito',
+        'Registro de quem abriu, movimentou e fechou cada turno',
+        'Lembrete automático caso tente fechar o app com o caixa aberto'
+      ]
+    },
+    relatorios: {
+      shortTitle: 'Relatórios',
+      img: 'img/10-relatorio.png',
+      title: 'Relatórios Gerenciais & Impressão Profissional',
+      desc: 'Visualize e imprima relatórios Diário, Semanal, Mensal ou Anual com logotipo da empresa, resumo de vendas, pagamentos, operadores e estoque opcional.',
+      bullets: [
+        'Impressão paginada formatada com o logo e dados do restaurante',
+        'Quebra por canal (Balcão, Mesa, Delivery), forma de pagamento e operador',
+        'Exportação pronta para conferência gerencial e contábil'
+      ]
+    },
+    opcoes: {
+      shortTitle: 'Marca & Opções',
+      img: 'img/11-opçoes.png',
+      title: 'Marca, Rede Local, SEFAZ NFC-e, Auto-Update & Backup',
+      desc: 'Central administrativa completa: personalize logotipo/cores, configure Servidor LAN + Tablets, ative SEFAZ NFC-e quando desejar, gerencie usuários e backups AES-256.',
+      bullets: [
+        'Módulo Fiscal SEFAZ NFC-e (Caminho A) opcional com Certificado A1 DPAPI',
+        'Auto-Manutenção de tabelas fiscais e Auto-Update preservando dados',
+        'Backup criptografado .fspbak (AES-256) e Auditoria com trilha SHA-256'
+      ]
     }
   };
 
+  let currentScreenKey = 'visao';
   const screenStage = document.getElementById('screenStage');
   const screenTabs = document.querySelectorAll('.screen-tab');
+  const thumbStrip = document.getElementById('thumbStrip');
+
+  function renderThumbStrip() {
+    if (!thumbStrip) return;
+    thumbStrip.innerHTML = screenOrder.map(k => {
+      const s = screens[k];
+      return `
+        <button type="button" class="thumb-item ${k === currentScreenKey ? 'active' : ''}" data-thumb="${k}">
+          <img src="${encodeURI(s.img)}" alt="${s.shortTitle}" loading="lazy" />
+          <span>${s.shortTitle}</span>
+        </button>`;
+    }).join('');
+    thumbStrip.querySelectorAll('.thumb-item').forEach(el => {
+      el.addEventListener('click', () => selectScreen(el.dataset.thumb));
+    });
+  }
+
   function renderScreen(key) {
     const data = screens[key];
     if (!data || !screenStage) return;
+    const encodedSrc = encodeURI(data.img);
     screenStage.innerHTML = `
       <div class="stage-grid">
         <div class="stage-desc">
@@ -264,17 +247,64 @@
           </ul>
           <a href="#contato" class="btn btn-primary btn-sm">Solicitar Demonstração →</a>
         </div>
-        <div class="mockup-frame">${data.preview}</div>
+        <div class="mockup-frame" id="stageZoomTrigger" title="Clique para ampliar em tela cheia">
+          <img src="${encodedSrc}" alt="${data.title}" class="stage-shot-img" />
+          <span class="shot-zoom-badge">🔍 Clique para ampliar</span>
+        </div>
       </div>`;
+    const zoomTrigger = document.getElementById('stageZoomTrigger');
+    if (zoomTrigger) zoomTrigger.addEventListener('click', () => openLightbox(screenOrder.indexOf(key)));
   }
+
+  function selectScreen(key) {
+    if (!screens[key]) return;
+    currentScreenKey = key;
+    screenTabs.forEach(b => b.classList.toggle('active', b.dataset.screen === key));
+    renderScreen(key);
+    renderThumbStrip();
+  }
+
   screenTabs.forEach(btn => {
-    btn.addEventListener('click', () => {
-      screenTabs.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      renderScreen(btn.dataset.screen);
-    });
+    btn.addEventListener('click', () => selectScreen(btn.dataset.screen));
   });
-  renderScreen('dashboard');
+  selectScreen('visao');
+
+  // Lightbox Modal for full-size screenshot inspection
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lbImg');
+  const lbCaption = document.getElementById('lbCaption');
+  const lbClose = document.getElementById('lbClose');
+  const lbPrev = document.getElementById('lbPrev');
+  const lbNext = document.getElementById('lbNext');
+  let lbIndex = 0;
+
+  function openLightbox(idx) {
+    lbIndex = ((idx % screenOrder.length) + screenOrder.length) % screenOrder.length;
+    const item = screens[screenOrder[lbIndex]];
+    lbImg.src = encodeURI(item.img);
+    lbImg.alt = item.title;
+    lbCaption.textContent = `${lbIndex + 1} / ${screenOrder.length} — ${item.title}`;
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+  }
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+  }
+  const heroShotWrap = document.getElementById('heroShotWrap');
+  if (heroShotWrap) heroShotWrap.addEventListener('click', () => openLightbox(0));
+  if (lbClose) lbClose.addEventListener('click', closeLightbox);
+  if (lbPrev) lbPrev.addEventListener('click', () => openLightbox(lbIndex - 1));
+  if (lbNext) lbNext.addEventListener('click', () => openLightbox(lbIndex + 1));
+  if (lightbox) {
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+    window.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') openLightbox(lbIndex - 1);
+      if (e.key === 'ArrowRight') openLightbox(lbIndex + 1);
+    });
+  }
 
   // 7. Instructions Tabs
   const guideTabs = document.querySelectorAll('.guide-tab');
