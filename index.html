@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PedidPro — Gestão Completa para Restaurantes, Mesas, Delivery &amp; Cozinha KDS</title>
+  <meta name="description" content="Sistema completo para restaurantes, bares, pizzarias e delivery: PedidPro Gestão (Windows + NFC-e SEFAZ opcional) e PedidPro Cozinha (APK Android nativo para tablets)." />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="ambient-bg" aria-hidden="true">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+    <canvas id="particle-canvas"></canvas>
+    <div class="grid-overlay"></div>
+  </div>
+  <div id="cursor-spotlight" aria-hidden="true"></div>
+
+  <!-- NAVBAR -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="#top" class="brand">
+        <img src="assets/logo.png" alt="Logo PedidPro" class="brand-logo" />
+        <div class="brand-text">
+          <span class="brand-name">Pedid<span>Pro</span></span>
+          <span class="brand-sub">Gestão &amp; Cozinha KDS</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#recursos">Recursos</a>
+        <a href="#telas">Telas do Sistema</a>
+        <a href="#instrucoes">Instruções</a>
+        <a href="#downloads">Downloads</a>
+        <a href="#contato">Contato</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="https://wa.me/5541992647547?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20o%20PedidPro." target="_blank" rel="noopener" class="btn btn-ghost btn-sm">
+          <span class="dot-live"></span> (41) 99264-7547
+        </a>
+        <a href="#downloads" class="btn btn-primary btn-sm">Baixar Agora</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero section">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <div class="badge-pill">
+            <span class="pulse-ring"></span>
+            <span>Ecossistema v1.44 Windows + APK v1.2 Cozinha Android</span>
+          </div>
+          <h1>
+            Controle total do seu <span class="gradient-text">Restaurante &amp; Delivery</span> sem mensalidade surpresa.
+          </h1>
+          <p class="hero-lead">
+            PDV rápido, Mesas e Comandas, Delivery com CEP automático, Ficha Técnica, SEFAZ NFC-e opcional com busca de NCM e aplicativo <strong>Android nativo para tablets na cozinha</strong> sincronizado na rede local.
+          </p>
+
+          <div class="hero-cta">
+            <a id="heroWinDownload" href="https://github.com/araujo791/PedidPro-Gest-o/releases/download/v1.44/Setup_PedidPro_Gestao_v1.44.exe" class="btn btn-primary btn-lg">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3,12V6.75L9,5.43V11.91L3,12M20,3V11.75L10,11.9V5.21L20,3M3,13L9,13.09V19.9L3,18.75V13M20,13.25V22L10,20.09V13.1L20,13.25Z"/></svg>
+              <span>Baixar PedidPro Windows <small id="winVerBadge">v1.44</small></span>
+            </a>
+            <a id="heroApkDownload" href="https://github.com/araujo791/PedidPro-Gest-o/releases/download/apk-v1.2/PedidPro_Cozinha_v1.2.apk" class="btn btn-glass btn-lg">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.6,9.48L19.44,6.3A0.63,0.63 0 0,0 18.35,5.67L16.47,8.91A11.43,11.43 0 0,0 7.53,8.91L5.65,5.67A0.63,0.63 0 0,0 4.56,6.3L6.4,9.48A10.78,10.78 0 0,0 1,18H23A10.78,10.78 0 0,0 17.6,9.48M7,15.25A1.25,1.25 0 1,1 8.25,14A1.25,1.25 0 0,1 7,15.25M17,15.25A1.25,1.25 0 1,1 18.25,14A1.25,1.25 0 0,1 17,15.25Z"/></svg>
+              <span>APK Cozinha Tablet <small id="apkVerBadge">v1.2</small></span>
+            </a>
+          </div>
+
+          <div class="hero-metrics">
+            <div class="metric">
+              <strong>100% Local</strong>
+              <span>Banco SQLite WAL + Rede LAN</span>
+            </div>
+            <div class="metric">
+              <strong>Zero WebView</strong>
+              <span>APK Nativo p/ Tablets</span>
+            </div>
+            <div class="metric">
+              <strong>SEFAZ Opcional</strong>
+              <span>NFC-e A1 + NCM Auto</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3D FLOATING SHOWCASE HERO MOCKUP -->
+        <div class="hero-visual reveal" data-tilt>
+          <div class="glass-window">
+            <div class="win-titlebar">
+              <div class="win-dots"><span></span><span></span><span></span></div>
+              <div class="win-title">PedidPro Gestão v1.44 — Servidor LAN :8765</div>
+              <div class="win-pill">● Caixa Aberto</div>
+            </div>
+            <div class="win-body">
+              <div class="mini-sidebar">
+                <div class="mini-item active">📊 Visão Geral</div>
+                <div class="mini-item">🛒 PDV Rápido</div>
+                <div class="mini-item">🪑 Mesas</div>
+                <div class="mini-item">🍳 Cozinha <b class="badge-mini">4</b></div>
+                <div class="mini-item">🛵 Delivery</div>
+                <div class="mini-item">📦 Cardápio</div>
+                <div class="mini-item">🧾 Fiscal SEFAZ</div>
+              </div>
+              <div class="mini-main">
+                <div class="mini-kpis">
+                  <div class="mini-kpi accent"><span>Hoje</span><strong>R$ 3.480</strong></div>
+                  <div class="mini-kpi success"><span>Ticket</span><strong>R$ 68,20</strong></div>
+                  <div class="mini-kpi warn"><span>Cozinha</span><strong>4 abertos</strong></div>
+                </div>
+                <div class="mini-chart-card">
+                  <div class="mini-chart-head"><span>Receita 7 Dias</span><em>+24,8%</em></div>
+                  <div class="mini-bars">
+                    <i style="height:45%"></i><i style="height:62%"></i><i style="height:54%"></i>
+                    <i style="height:78%"></i><i style="height:70%"></i><i style="height:88%"></i>
+                    <i class="today" style="height:98%"></i>
+                  </div>
+                </div>
+                <div class="mini-order-list">
+                  <div class="mini-ord"><span><b>#142</b> • Mesa 04 (2x Smash)</span><em class="tag-ready">Devolvido p/ Caixa</em></div>
+                  <div class="mini-ord"><span><b>#143</b> • Delivery ViaCEP</span><em class="tag-prep">Preparando</em></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating Android Tablet Card -->
+          <div class="floating-tablet">
+            <div class="tab-notch"></div>
+            <div class="tab-head">
+              <span>📱 Tablet Cozinha KDS</span>
+              <span class="tab-live">LAN 2s</span>
+            </div>
+            <div class="tab-ticket">
+              <div class="tab-t-top"><b>#144 • Mesa 07</b><span>3 min</span></div>
+              <p>2x Pizza Margherita G<br/><small>⚠ Borda recheada</small></p>
+              <div class="tab-btn">✓ Devolver Pronto p/ Balcão</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES BENTO GRID -->
+    <section class="section" id="recursos">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Tudo em um só ecossistema</span>
+          <h2>Projetado para operação real de <span class="gradient-text">alta velocidade</span></h2>
+          <p>Do balcão ao motoboy, da chapa da cozinha ao fechamento fiscal com o contador.</p>
+        </div>
+
+        <div class="bento-grid">
+          <article class="bento-card reveal" data-tilt>
+            <div class="bento-icon orange">🛒</div>
+            <h3>PDV Balcão &amp; Delivery Integrado</h3>
+            <p>Lançamento ultrarrápido, observações para cozinha, desconto, cálculo automático de troco, PIX/Cartão e busca instantânea de endereço por <strong>CEP via ViaCEP</strong>.</p>
+          </article>
+
+          <article class="bento-card reveal" data-tilt>
+            <div class="bento-icon green">📱</div>
+            <h3>APK Cozinha Nativo p/ Tablets</h3>
+            <p>App Android nativo (zero WebView) com cartões grandes em modo paisagem. Recebe pedidos de Balcão, Delivery e <strong>Mesas</strong> e devolve prontos para o Caixa entregar.</p>
+          </article>
+
+          <article class="bento-card reveal" data-tilt>
+            <div class="bento-icon blue">🧾</div>
+            <h3>SEFAZ NFC-e Opcional + NCM Auto</h3>
+            <p>Vem desativado por padrão. Ative quando quiser com Certificado A1 (`.pfx`), busca automática de <strong>NCM/CEST/CFOP/CSOSN</strong> no cardápio e Contingência Offline.</p>
+          </article>
+
+          <article class="bento-card reveal" data-tilt>
+            <div class="bento-icon purple">📊</div>
+            <h3>Ficha Técnica, CMV &amp; Lucro Real</h3>
+            <p>Vincule ingredientes aos pratos com baixa automática no estoque de insumos. Saiba seu lucro líquido real geral e prato a prato + relatórios diário, semanal, mensal e anual.</p>
+          </article>
+
+          <article class="bento-card reveal" data-tilt>
+            <div class="bento-icon amber">🔐</div>
+            <h3>Login, Auditoria SHA-256 &amp; Backup AES</h3>
+            <p>Cada operador entra com login próprio (`Quem Fez o Quê`), backups criptografados em `.fspbak` (AES-256) e lembrete automático de caixa aberto ao fechar.</p>
+          </article>
+
+          <article class="bento-card reveal" data-tilt>
+            <div class="bento-icon cyan">🔄</div>
+            <h3>Auto-Update &amp; Dados Preservados</h3>
+            <p>Atualize o sistema em 1 clique preservando banco SQLite, logo, usuários e certificados, além de sincronização online automática das tabelas NCM/SEFAZ.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE SCREEN SHOWCASE -->
+    <section class="section showcase-section" id="telas">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Telas Reais &amp; Interativas</span>
+          <h2>Explore as principais <span class="gradient-text">telas do PedidPro</span></h2>
+          <p>Alterne entre os módulos do Windows Desktop e do App Android Cozinha abaixo.</p>
+        </div>
+
+        <div class="screen-tabs reveal" id="screenTabs">
+          <button class="screen-tab active" data-screen="dashboard">📊 Dashboard</button>
+          <button class="screen-tab" data-screen="pos">🛒 PDV &amp; NFC-e</button>
+          <button class="screen-tab" data-screen="tables">🪑 Mesas &amp; Salão</button>
+          <button class="screen-tab" data-screen="kitchen">📱 Cozinha Tablet (APK)</button>
+          <button class="screen-tab" data-screen="catalog">📦 Cardápio &amp; NCM Auto</button>
+          <button class="screen-tab" data-screen="reports">🖨 Relatórios &amp; Fiscal</button>
+        </div>
+
+        <div class="screen-stage glass-card reveal" id="screenStage">
+          <!-- Populated cleanly & dynamically by app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- INSTRUCTIONS / ONBOARDING -->
+    <section class="section" id="instrucoes">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Passo a Passo</span>
+          <h2>Instruções de <span class="gradient-text">Instalação &amp; Uso</span></h2>
+          <p>Comece a operar em poucos minutos no caixa, na rede local e nos tablets da cozinha.</p>
+        </div>
+
+        <div class="guide-tabs reveal" id="guideTabs">
+          <button class="guide-tab active" data-guide="windows">🖥 Windows (Caixa / Servidor)</button>
+          <button class="guide-tab" data-guide="android">📱 Tablet Android (Cozinha APK)</button>
+          <button class="guide-tab" data-guide="fiscal">🧾 SEFAZ NFC-e &amp; Auto-Update</button>
+        </div>
+
+        <div class="guide-panels">
+          <div class="guide-panel active" id="guide-windows">
+            <div class="steps-grid">
+              <div class="step-card">
+                <span class="step-num">01</span>
+                <h4>Baixe e execute o Instalador Único</h4>
+                <p>Faça o download de <code>Setup_PedidPro_Gestao_v1.44.exe</code>. Ele já inclui o banco SQLite nativo (<code>winsqlite3.dll</code>) e não precisa instalar dependências extras.</p>
+              </div>
+              <div class="step-card">
+                <span class="step-num">02</span>
+                <h4>Configure sua Marca &amp; Logo</h4>
+                <p>No assistente visual de 3 passos, escolha nome da empresa, logotipo PNG/JPG, cor principal e tema (Escuro Obsidian ou Claro). Tudo pode ser editado depois em <em>Marca &amp; Opções</em>.</p>
+              </div>
+              <div class="step-card">
+                <span class="step-num">03</span>
+                <h4>Entre com o Login Inicial</h4>
+                <p>Acesse com o operador padrão <code>admin</code> e senha <code>1234</code>. Depois cadastre seus atendentes e caixas em <em>Marca &amp; Opções → Usuários &amp; Auditoria</em>.</p>
+              </div>
+              <div class="step-card">
+                <span class="step-num">04</span>
+                <h4>Ative o Modo Servidor (se usar rede/tablets)</h4>
+                <p>Em <em>Marca &amp; Opções → Rede Local</em>, selecione <strong>Servidor (Caixa)</strong>, anote o IP + Token e clique em <em>Liberar Porta &amp; Firewall no Windows (Admin)</em>.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="guide-panel" id="guide-android">
+            <div class="steps-grid">
+              <div class="step-card">
+                <span class="step-num">01</span>
+                <h4>Instale o APK no Tablet</h4>
+                <p>Baixe o arquivo <code>PedidPro_Cozinha_v1.2.apk</code> diretamente no tablet da cozinha e autorize a instalação (Android 6.0 ou superior). Interface 100% nativa e responsiva.</p>
+              </div>
+              <div class="step-card">
+                <span class="step-num">02</span>
+                <h4>Configure Servidor &amp; Credenciais</h4>
+                <p>Toque em <strong>⚙ Servidor</strong>, informe o IP do PC Servidor (ex.: <code>192.168.1.50</code>), porta <code>8765</code>, Token e o Login/Senha do operador da cozinha (ou admin).</p>
+              </div>
+              <div class="step-card">
+                <span class="step-num">03</span>
+                <h4>Teste e Salve a Conexão</h4>
+                <p>Clique em <strong>Testar Conexão</strong> para validar IP + Token + Login e depois em <strong>Salvar e Conectar</strong>. Os dados ficam salvos no tablet automaticamente.</p>
+              </div>
+              <div class="step-card">
+                <span class="step-num">04</span>
+                <h4>Produza &amp; Devolva ao Caixa</h4>
+                <p>Pedidos de Balcão, Mesas e Delivery aparecem em tempo real. Ao concluir o preparo, toque em <strong>Devolver p/ Caixa</strong> para o balcão/garçom entregar ao cliente.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="guide-panel" id="guide-fiscal">
+            <div class="steps-grid">
+              <div class="step-card">
+                <span class="step-num">01</span>
+                <h4>Preencha NCM no Cardápio antes mesmo de ativar</h4>
+                <p>Ao criar ou editar um produto no Cardápio, clique em <strong>🔍 Buscar NCM</strong> ou use <strong>⚖ NCM Fiscal em Lote</strong> para preencher NCM, CEST, CFOP e CSOSN/CST automaticamente.</p>
+              </div>
+              <div class="step-card">
+                <span class="step-num">02</span>
+                <h4>Ative apenas quando for emitir</h4>
+                <p>O módulo SEFAZ fica <strong>desativado por padrão</strong>. Quando desejar emitir NFC-e Modelo 65, acesse <em>Marca &amp; Opções → Fiscal</em>, ative a chave e selecione UF, IE e Regime.</p>
+              </div>
+              <div class="step-card">
+                <span class="step-num">03</span>
+                <h4>Carregue o Certificado A1 (.pfx) &amp; CSC</h4>
+                <p>Selecione o arquivo <code>.pfx</code> da empresa, informe a senha (protegida com Windows DPAPI) e o ID/Token CSC gerado no portal da SEFAZ estadual. Comece sempre testando em <strong>Homologação</strong>.</p>
+              </div>
+              <div class="step-card">
+                <span class="step-num">04</span>
+                <h4>Auto-Manutenção &amp; Auto-Update</h4>
+                <p>O app sincroniza tabelas NCM/UF automaticamente e avisa no topo sempre que houver nova versão no GitHub — atualizando em 1 clique sem perder nenhum dado.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOWNLOAD CENTER -->
+    <section class="section" id="downloads">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Centro de Downloads</span>
+          <h2>Baixe as versões <span class="gradient-text">oficiais mais recentes</span></h2>
+          <p>Links conectados diretamente aos Releases oficiais no GitHub (<code>araujo791/PedidPro-Gest-o</code>).</p>
+        </div>
+
+        <div class="download-grid">
+          <div class="download-card reveal" data-tilt>
+            <div class="dl-head">
+              <span class="dl-os">WINDOWS 10 / 11 (64-bit)</span>
+              <span class="dl-ver" id="dlWinTag">v1.44</span>
+            </div>
+            <h3>PedidPro Gestão Desktop</h3>
+            <p>Instalador único para Caixa/Servidor ou Terminais Clientes na rede local. Já inclui SQLite WAL, Relatórios, Fiscal NFC-e Opcional e Auto-Update.</p>
+            <ul class="dl-specs">
+              <li>✓ Preserva dados e logotipo ao atualizar</li>
+              <li>✓ Certificado A1 local + Contingência Offline</li>
+              <li>✓ Login por operador + Auditoria SHA-256</li>
+            </ul>
+            <a id="dlWinBtn" href="https://github.com/araujo791/PedidPro-Gest-o/releases/download/v1.44/Setup_PedidPro_Gestao_v1.44.exe" class="btn btn-primary btn-block">
+              ⬇ Baixar Setup_PedidPro_Gestao_v1.44.exe
+            </a>
+          </div>
+
+          <div class="download-card reveal" data-tilt>
+            <div class="dl-head">
+              <span class="dl-os green">ANDROID 6.0+ (TABLETS)</span>
+              <span class="dl-ver green" id="dlApkTag">apk-v1.2</span>
+            </div>
+            <h3>PedidPro Cozinha (KDS Nativo)</h3>
+            <p>Aplicativo exclusivo para tablets na cozinha. Conecta ao Servidor via Wi-Fi local em tempo real, com alertas sonoros, tema claro/escuro e fluxo de devolução.</p>
+            <ul class="dl-specs">
+              <li>✓ Interface 100% nativa (sem WebView)</li>
+              <li>✓ Recebe Balcão, Mesas &amp; Delivery</li>
+              <li>✓ Devolução de pedidos prontos ao Caixa</li>
+            </ul>
+            <a id="dlApkBtn" href="https://github.com/araujo791/PedidPro-Gest-o/releases/download/apk-v1.2/PedidPro_Cozinha_v1.2.apk" class="btn btn-success btn-block">
+              ⬇ Baixar PedidPro_Cozinha_v1.2.apk
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT & SUPPORT -->
+    <section class="section" id="contato">
+      <div class="container">
+        <div class="contact-wrapper glass-card reveal">
+          <div class="contact-info">
+            <span class="eyebrow">Atendimento Direto</span>
+            <h2>Fale conosco e leve o <span class="gradient-text">PedidPro</span> para o seu negócio</h2>
+            <p>Dúvidas sobre implantação, rede com tablets, personalização ou emissão fiscal? Entre em contato direto pelos canais abaixo:</p>
+
+            <div class="contact-cards">
+              <a href="https://wa.me/5541992647547?text=Ol%C3%A1%20Anderson!%20Tenho%20interesse%20no%20PedidPro." target="_blank" rel="noopener" class="contact-item">
+                <div class="c-ico wa">💬</div>
+                <div>
+                  <small>Celular &amp; WhatsApp</small>
+                  <strong>(41) 99264-7547</strong>
+                </div>
+                <span class="c-arrow">Abrir →</span>
+              </a>
+
+              <a href="tel:+5541992647547" class="contact-item">
+                <div class="c-ico tel">📞</div>
+                <div>
+                  <small>Ligação Direta</small>
+                  <strong>+55 (41) 99264-7547</strong>
+                </div>
+                <button type="button" class="copy-btn" data-copy="(41) 99264-7547">Copiar</button>
+              </a>
+
+              <a href="mailto:anderson@wirebyinfo.com" class="contact-item">
+                <div class="c-ico mail">✉</div>
+                <div>
+                  <small>E-mail Comercial &amp; Suporte</small>
+                  <strong>anderson@wirebyinfo.com</strong>
+                </div>
+                <button type="button" class="copy-btn" data-copy="anderson@wirebyinfo.com">Copiar</button>
+              </a>
+            </div>
+          </div>
+
+          <form class="contact-form" id="quickContactForm">
+            <h3>Enviar Mensagem Rápida</h3>
+            <p>Preencha abaixo e envie diretamente pelo WhatsApp ou E-mail.</p>
+            <div class="field">
+              <label for="cName">Seu Nome / Restaurante</label>
+              <input type="text" id="cName" placeholder="Ex.: Anderson — Burger House" required />
+            </div>
+            <div class="field">
+              <label for="cInterest">Interesse Principal</label>
+              <select id="cInterest">
+                <option value="Implantação completa (Windows + Cozinha APK)">Implantação completa (Windows + Cozinha APK)</option>
+                <option value="Dúvida sobre SEFAZ / NFC-e e NCM">Dúvida sobre SEFAZ / NFC-e e NCM</option>
+                <option value="Suporte técnico / Rede Local">Suporte técnico / Rede Local</option>
+                <option value="Outro assunto">Outro assunto</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="cMsg">Mensagem</label>
+              <textarea id="cMsg" rows="3" placeholder="Como podemos ajudar o seu restaurante hoje?"></textarea>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">💬 Enviar no WhatsApp</button>
+              <button type="button" id="sendEmailBtn" class="btn btn-glass">✉ Enviar por E-mail</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="assets/logo.png" alt="PedidPro" width="32" height="32" />
+        <div>
+          <strong>PedidPro Gestão &amp; Cozinha KDS</strong>
+          <span>WireByInfo • WhatsApp: (41) 99264-7547 • anderson@wirebyinfo.com</span>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/araujo791/PedidPro-Gest-o" target="_blank" rel="noopener">GitHub Código &amp; Releases</a>
+        <a href="https://wa.me/5541992647547" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="mailto:anderson@wirebyinfo.com">E-mail</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/5541992647547?text=Ol%C3%A1!%20Preciso%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20PedidPro." target="_blank" rel="noopener" class="wa-float" title="Chamar no WhatsApp (41) 99264-7547">
+    <span>💬</span>
+    <b>WhatsApp</b>
+  </a>
+
+  <div class="toast" id="toast">Copiado!</div>
+
+  <script src="app.js"></script>
+</body>
+</html>
