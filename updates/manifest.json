@@ -1,11 +1,11 @@
 {
-    "desktop_version":  "1.45",
-    "desktop_url":  "https://araujo791.github.io/PedidPro/updates/Setup_PedidPro_Gestao_v1.45.exe",
-    "desktop_size":  1948672,
-    "desktop_notes":  "- Certificado A1 (.pfx) agora exibe Titular (em nome de quem esta), CNPJ e Data de Validade em vez do caminho do arquivo\n- Solicitacao automatica da senha ao escolher o .pfx para leitura imediata do titular e validade\n- Todas as melhorias SEFAZ NFC-e (Caminho A), Busca NCM e Auto-Update",
-    "apk_version":  "1.2",
-    "apk_url":  "https://araujo791.github.io/PedidPro/updates/PedidPro_Cozinha_v1.2.apk",
-    "apk_notes":  "- Layout 100% nativo em landscape p/ tablets\n- Credenciais de login salvas entre reinicios\n- Pedidos das Mesas sincronizados e devolucao ao Balcao/Caixa",
+    "desktop_version":  "1.46",
+    "desktop_url":  "https://araujo791.github.io/PedidPro/updates/Setup_PedidPro_Gestao_v1.46.exe",
+    "desktop_size":  1951232,
+    "desktop_notes":  "- Alarme sonoro sintetizado de alta intensidade (3 toques de campainha/sirene) ao chegar pedido ou devolucao da cozinha\n- Botao \u0027Testar Som\u0027 no KDS + aviso em Servidor e Clientes\n- Inclui leitura de titular/validade do Certificado A1, SEFAZ NFC-e e Auto-Update",
+    "apk_version":  "1.3",
+    "apk_url":  "https://araujo791.github.io/PedidPro/updates/PedidPro_Cozinha_v1.3.apk",
+    "apk_notes":  "- Novo alarme sonoro de alta intensidade (AudioTrack em STREAM_ALARM + vibracao) impossivel de ignorar na cozinha\n- Botao \u0027Testar Som\u0027 na barra superior do tablet\n- Pedidos das Mesas, Balcao e Delivery com devolucao ao Balcao/Caixa",
     "fiscal_version":  "2026.11.1",
     "fiscal_url":  "https://araujo791.github.io/PedidPro/updates/fiscal_tables.json"
 }
