@@ -1,11 +1,11 @@
 {
-    "desktop_version":  "1.47",
-    "desktop_url":  "https://araujo791.github.io/PedidPro/updates/Setup_PedidPro_Gestao_v1.47.exe",
-    "desktop_size":  1952256,
-    "desktop_notes":  "- Pedidos Delivery marcados como Pronto na Cozinha (PC ou Tablet) passam automaticamente para \u0027Aguardando Coleta\u0027 em Entregas \u0026 Delivery\n- Destaque visual no card de coleta pronta para saida do motoboy\n- Inclui alarme sonoro de alta intensidade, leitura de A1 e SEFAZ NFC-e",
+    "desktop_version":  "1.48",
+    "desktop_url":  "https://araujo791.github.io/PedidPro/updates/Setup_PedidPro_Gestao_v1.48.exe",
+    "desktop_size":  1954304,
+    "desktop_notes":  "v1.48: Pedidos Delivery entregues saem da fila ativa (com opção de histórico); forma de pagamento obrigatória no PDV/Delivery; botão de aplicação imediata no Auto-Update ao detectar nova versão.",
     "apk_version":  "1.3",
     "apk_url":  "https://araujo791.github.io/PedidPro/updates/PedidPro_Cozinha_v1.3.apk",
-    "apk_notes":  "- Novo alarme sonoro de alta intensidade (AudioTrack em STREAM_ALARM + vibracao)\n- Botao \u0027Testar Som\u0027 na barra superior do tablet\n- Pedidos das Mesas, Balcao e Delivery com devolucao ao Balcao/Caixa",
+    "apk_notes":  "v1.3: Alarme sonoro contínuo e chamativo ao receber novo pedido no KDS Mobile.",
     "fiscal_version":  "2026.11.1",
     "fiscal_url":  "https://araujo791.github.io/PedidPro/updates/fiscal_tables.json"
 }
