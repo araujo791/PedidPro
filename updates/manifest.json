@@ -1,8 +1,8 @@
 {
-    "desktop_version":  "1.49",
-    "desktop_url":  "https://araujo791.github.io/PedidPro/updates/Setup_PedidPro_Gestao_v1.49.exe",
-    "desktop_size":  1989120,
-    "desktop_notes":  "v1.49: Impressoras padrão (Térmica com colunas e teste estilo iFood + A4 exclusiva para relatórios) e proteção total pré-atualização para Certificado Digital A1, banco e configurações.",
+    "desktop_version":  "1.50",
+    "desktop_url":  "https://araujo791.github.io/PedidPro/updates/Setup_PedidPro_Gestao_v1.50.exe",
+    "desktop_size":  2011136,
+    "desktop_notes":  "v1.50: Iniciar com Windows + entrada automática e agendamento automático de abertura/fechamento de Atendimento e Caixa.",
     "apk_version":  "1.3",
     "apk_url":  "https://araujo791.github.io/PedidPro/updates/PedidPro_Cozinha_v1.3.apk",
     "apk_notes":  "v1.3: Alarme sonoro contínuo e chamativo ao receber novo pedido no KDS Mobile.",
